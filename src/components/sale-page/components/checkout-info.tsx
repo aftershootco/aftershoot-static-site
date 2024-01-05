@@ -2,6 +2,7 @@
 
 import usePlanState from "../../../../store/plan-state";
 import BackButton from "./back-button";
+import CheckoutFoot from "./checkout-foot";
 import PriceDisplay from "./pricing-display";
 import PromocodeInput from "./promocode-input";
 
@@ -17,7 +18,7 @@ const CheckoutInfo = () => {
   return (
     <div className="rounded-[20px] bg-[#F6F6F6] p-[48px] font-archivo text-black">
       <BackButton onClick={handleOnBackButtonClick} />
-      <div className="mt-8 flex gap-4 text-xl -tracking-[0.2px]">
+      <div className="mt-8 flex gap-8 text-xl -tracking-[0.2px] md:gap-[60px]">
         <div className="flex-1">
           <div className="flex items-center justify-between">
             <div>
@@ -37,17 +38,38 @@ const CheckoutInfo = () => {
           <div className="mt-6">
             <h2 className="font-semibold">Review your subscription</h2>
 
-            <div>
-              <div>
-                <div>Aftershoot {ACTIVE_PLAN?.pricingName}</div>
-                <div></div>
+            <div className="mt-8 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-light tracking-[0.14px]">
+                  Aftershoot {ACTIVE_PLAN?.pricingName}
+                </div>
+                <div>
+                  {ACTIVE_PLAN?.price.yearly}
+                  <span className="text-suvaGrey">/year</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-light tracking-[0.14px]">
+                  Subtotal
+                </div>
+                <div>{ACTIVE_PLAN?.price.yearly}</div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-light tracking-[0.14px]">
+                  Total
+                </div>
+                <div>{ACTIVE_PLAN?.price.yearly}</div>
               </div>
             </div>
           </div>
+
+          <CheckoutFoot />
         </div>
 
         {/* stripe form */}
-        <div className="flex-1 rounded-md bg-white shadow-xl">
+        <div className="max-w-[450px] flex-1 rounded-md bg-white shadow-xl">
           <div className="p-4">placeholder</div>
         </div>
       </div>

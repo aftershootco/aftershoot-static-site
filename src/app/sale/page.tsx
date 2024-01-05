@@ -1,9 +1,9 @@
-import SubFunnel from "../../components/subs-funnel";
+import SalePage from "../../components/sale-page";
 
 const page = () => {
   return (
     <div>
-      <SubFunnel />
+      <SalePage />
     </div>
   );
 };

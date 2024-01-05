@@ -1,5 +1,10 @@
-import pricingData from "@/components/constant/pricing-data";
+import pricingData, { pricingDataProps } from "../data/pricing-data";
 import PlanCard from "./plan-card";
+
+type PricingPlanListProps = {
+  handlePlanSelection: (plan: pricingDataProps) => void;
+  selectedPlan: pricingDataProps | null;
+};
 
 const PricingPlanList = () => {
   return (

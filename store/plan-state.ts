@@ -1,0 +1,19 @@
+import { pricingDataProps } from "@/components/constant/pricing-data";
+import { create } from "zustand";
+
+type TState = {
+  selectedPlan: pricingDataProps | null;
+};
+
+type TActions = {
+  setSelectedPlan: (plan: pricingDataProps) => void;
+};
+
+type TPlanState = TState & TActions;
+
+const usePlanState = create<TPlanState>((set) => ({
+  selectedPlan: null,
+  setSelectedPlan: (plan) => set(() => ({ selectedPlan: plan })),
+}));
+
+export default usePlanState;

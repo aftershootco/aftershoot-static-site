@@ -1,24 +1,27 @@
 import { cn } from "@/utils/cn";
-import React from "react";
+import React, { forwardRef, HTMLAttributes } from "react";
 
-type TAppContainer = {
+type TAppContainerProps = HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
-  className?: string;
 };
 
-const AppContainer = (props: TAppContainer) => {
-  const { className, children } = props;
+const AppContainer = forwardRef<HTMLDivElement, TAppContainerProps>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "mx-auto w-full max-w-[80rem] px-2 py-8 md:py-14 xxl:px-0",
+          className && className,
+        )}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 
-  return (
-    <div
-      className={cn(
-        "mx-auto w-full max-w-[80rem] px-2 py-8 md:py-14 xxl:px-0",
-        className && className
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+AppContainer.displayName = "AppContainer";
 
 export default AppContainer;

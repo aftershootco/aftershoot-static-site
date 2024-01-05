@@ -1,7 +1,5 @@
 "use client";
 
-import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
 import usePlanState from "../../../../store/plan-state";
 
 import AppContainer from "@/components/ui/site/app-containr";
@@ -16,41 +14,30 @@ const CheckoutInfo = () => {
 
   const isPlanSelected = plantState.selectedPlan;
 
-  const pageComponent = useRef<HTMLDivElement>(null);
-
   const ACTIVE_PLAN = plantState.selectedPlan;
+
+  const billingPeriod = plantState.billingPeriod;
+
+  const displayPrice =
+    billingPeriod === "monthly"
+      ? ACTIVE_PLAN?.price.monthly
+      : ACTIVE_PLAN?.price.yearly;
 
   const handleOnBackButtonClick = () => {
     plantState.setSelectedPlan(null);
   };
 
-  useEffect(() => {
-    if (!pageComponent.current) return;
-
-    let ctx = gsap.context(() => {
-      gsap.to(pageComponent.current, {
-        y: isPlanSelected ? "0%" : "100%",
-        duration: 1,
-        opacity: isPlanSelected ? 1 : 0,
-        ease: "ease-in-out",
-      });
-    }, pageComponent.current);
-
-    return () => ctx.revert();
-  }, [isPlanSelected]);
-
   return (
     <div
-      ref={pageComponent}
       className={cn(
-        "absolute inset-0 z-10 flex items-center ",
-        isPlanSelected && "bg-black/50",
+        "absolute inset-0 z-50 flex h-screen translate-x-full transition-all duration-1000",
+        isPlanSelected && "translate-x-0 ",
       )}
     >
-      <AppContainer>
-        <div className="rounded-[20px] bg-[#F6F6F6] p-[48px] font-archivo text-black">
+      <AppContainer className="my-auto">
+        <div className="rounded-[20px] bg-[#F6F6F6] p-6 font-archivo text-black md:p-[48px]">
           <BackButton onClick={handleOnBackButtonClick} />
-          <div className="mt-8 flex gap-8 text-xl -tracking-[0.2px] md:gap-[60px]">
+          <div className="mt-8 flex flex-col gap-8 text-xl -tracking-[0.2px] md:flex-row md:gap-[60px]">
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <div>
@@ -59,10 +46,7 @@ const CheckoutInfo = () => {
                     {` Then $${ACTIVE_PLAN?.price.yearly} per year after the coupon expires`}
                   </p>
                 </div>
-                <PriceDisplay
-                  price={ACTIVE_PLAN?.price.monthly}
-                  className="mx-8 my-auto"
-                />
+                <PriceDisplay price={displayPrice} className="mx-8 my-auto" />
               </div>
 
               <PromocodeInput />
@@ -76,7 +60,7 @@ const CheckoutInfo = () => {
                       Aftershoot {ACTIVE_PLAN?.pricingName}
                     </div>
                     <div>
-                      {ACTIVE_PLAN?.price.yearly}
+                      {ACTIVE_PLAN?.price.yearly ?? "00"}
                       <span className="text-suvaGrey">/year</span>
                     </div>
                   </div>
@@ -85,25 +69,27 @@ const CheckoutInfo = () => {
                     <div className="text-sm font-light tracking-[0.14px]">
                       Subtotal
                     </div>
-                    <div>{ACTIVE_PLAN?.price.yearly}</div>
+                    <div>{ACTIVE_PLAN?.price.yearly ?? "00"}</div>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm font-light tracking-[0.14px]">
                       Total
                     </div>
-                    <div>{ACTIVE_PLAN?.price.yearly}</div>
+                    <div>{ACTIVE_PLAN?.price.yearly ?? "00"}</div>
                   </div>
                 </div>
               </div>
 
-              <CheckoutFoot />
+              <CheckoutFoot className="hidden md:flex" />
             </div>
 
             {/* stripe form */}
             <div className="max-w-[450px] flex-1 rounded-md bg-white shadow-xl">
               <div className="p-4">placeholder</div>
             </div>
+
+            <CheckoutFoot className=" mt-8 md:hidden" />
           </div>
         </div>
       </AppContainer>

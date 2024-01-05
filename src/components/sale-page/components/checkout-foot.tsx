@@ -1,4 +1,5 @@
 import PowerByStripe from "@/assets/icons/power-by-stripe";
+import { cn } from "@/utils/cn";
 
 const links = [
   {
@@ -18,9 +19,14 @@ const links = [
   },
 ];
 
-const CheckoutFoot = () => {
+const CheckoutFoot = ({ className }: { className: string }) => {
   return (
-    <div className="mt-14 flex items-center justify-between gap-4">
+    <div
+      className={cn(
+        "mt-14 flex items-center justify-between gap-4",
+        className && className,
+      )}
+    >
       <div className="space-x-3">
         {links.map((link) => (
           <a

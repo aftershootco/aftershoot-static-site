@@ -20,7 +20,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
   return (
     <button
       key={plan.id}
-      className="flex justify-between gap-4 rounded-md border border-[#ABABAB] p-4 shadow-sm md:p-6"
+      className="flex flex-col justify-between gap-4 rounded-md border border-[#ABABAB] p-4 shadow-sm md:flex-row md:p-6"
       onClick={handlePlanSelection}
     >
       <div className="text-left">
@@ -41,7 +41,10 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         </div>
       </div>
 
-      <PriceDisplay price={displayPrice} className="mx-8 my-auto" />
+      <PriceDisplay
+        price={displayPrice}
+        className="mx-auto my-auto min-w-[130px] lg:mx-8"
+      />
     </button>
   );
 };

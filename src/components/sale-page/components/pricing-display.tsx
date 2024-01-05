@@ -9,7 +9,7 @@ type PriceDisplayProps = {
 const PriceDisplay = (props: PriceDisplayProps) => {
   const plantState = usePlanState();
 
-  const { price = 0, className } = props;
+  const { price = "00", className } = props;
 
   const billingPeriod = plantState.billingPeriod;
 
@@ -19,7 +19,9 @@ const PriceDisplay = (props: PriceDisplayProps) => {
   return (
     <div className={cn(className && className)}>
       <div className="flex items-end gap-2">
-        <div className="text-[45px] font-medium leading-[60px]">${price}</div>
+        <div className="text-[34px] font-medium leading-[60px] lg:text-[45px]">
+          ${price}
+        </div>
         <div className="text-[20px] leading-[34px] text-suvaGrey">
           /{perPeriodic}
         </div>

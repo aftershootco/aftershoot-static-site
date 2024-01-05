@@ -214,4 +214,5 @@ const pricingData = [
   },
 ];
 
+export type pricingDataProps = (typeof pricingData)[0];
 export default pricingData;

@@ -1,8 +1,9 @@
 "use client";
 
 import ToggleSwitch from "@/components/ui/toggle-switch";
+import PlanList from "./pricing-plan-list";
 
-const PlansInfo = () => {
+const PricingPlansInfo = () => {
   const handleSwitchToggle = () => {
     console.log("switch toggle");
   };
@@ -23,8 +24,10 @@ const PlansInfo = () => {
           className="font-semibold translate-y-1"
         />
       </div>
+
+      <PlanList />
     </div>
   );
 };
 
-export default PlansInfo;
+export default PricingPlansInfo;

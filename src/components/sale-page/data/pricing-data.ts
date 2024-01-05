@@ -3,8 +3,12 @@ const pricingData = [
     id: "1",
     pricingName: "Selects",
     description: "Get unlimited AI Culling",
-    discountedPrice: 99,
-    originalPrice: 120,
+    price: {
+      monthly: 12,
+      yearly: 120,
+      discountedMonthly: 9,
+      discountedYearly: 99,
+    },
     billType: "Billed Annually",
     highlight: false,
     features: [
@@ -41,8 +45,12 @@ const pricingData = [
     id: "2",
     pricingName: "Essentials",
     description: "Cull & Edit Your Images with Prebuilt AI Styles",
-    discountedPrice: 199,
-    originalPrice: 240,
+    price: {
+      monthly: 40,
+      yearly: 240,
+      discountedMonthly: 40,
+      discountedYearly: 199,
+    },
     billType: "Billed Annually",
     highlight: false,
     features: [
@@ -91,8 +99,12 @@ const pricingData = [
     id: "3",
     pricingName: "Pro",
     description: "Cull & Edit like a Pro with Personal AI Profile",
-    discountedPrice: 399,
-    originalPrice: 480,
+    price: {
+      monthly: 40,
+      yearly: 480,
+      discountedMonthly: 40,
+      discountedYearly: 399,
+    },
     billType: "Billed Annually",
     highlight: true,
     features: [
@@ -147,8 +159,12 @@ const pricingData = [
     id: "4",
     pricingName: "Max",
     description: "Create Your Own AI Assistants to Automate Post-processing",
-    discountedPrice: 599,
-    originalPrice: 720,
+    price: {
+      monthly: 40,
+      yearly: 720,
+      discountedMonthly: 40,
+      discountedYearly: 599,
+    },
     billType: "Billed Annually",
     highlight: false,
     features: [

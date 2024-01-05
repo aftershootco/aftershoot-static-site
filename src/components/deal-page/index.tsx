@@ -2,10 +2,10 @@
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import pricingData from "../constant/pricing-data";
 import siteIcon from "./components/icons/Logo.png";
 import checkGreenIcon from "./components/icons/check-green.svg";
 import crossRedIcon from "./components/icons/cross-red.svg";
+import pricingData from "./data/pricing-data";
 
 const PricingBanner = () => {
   const searchParams = useSearchParams();
@@ -30,7 +30,7 @@ const PricingBanner = () => {
   return (
     <div>
       <div
-        className="min-h-screen bg-[#0D0D0D] py-[40px] font-erode-variable  md:pt-[60px] text-white"
+        className="font-erode-variable min-h-screen bg-[#0D0D0D] py-[40px]  text-white md:pt-[60px]"
         style={{
           backgroundImage:
             "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 81.77%), url(<path-to-image>), lightgray -233.596px 0px / 112.593% 100% no-repeat",
@@ -42,37 +42,37 @@ const PricingBanner = () => {
           </button>
         </div>
 
-        <h1 className="mt-24 text-[52px] md:text-[88px] tracking-[-1.56px] md:tracking-[-2.56px] px-6 leading-[52px] md:leading-[88px] text-center w-full mx-auto max-w-[780px]">
+        <h1 className="mx-auto mt-24 w-full max-w-[780px] px-6 text-center text-[52px] leading-[52px] tracking-[-1.56px] md:text-[88px] md:leading-[88px] md:tracking-[-2.56px]">
           Start Your 30 Days Free Trial Now{" "}
           <span className="text-[#F60]">📸</span>
         </h1>
 
-        <div className=" grid sm:grid-cols-2 lg:flex gap-4 w-full max-w-[87rem] mx-auto text-black my-32 flex-wrap px-4 md:px-4">
+        <div className=" mx-auto my-32 grid w-full max-w-[87rem] flex-wrap gap-4 px-4 text-black sm:grid-cols-2 md:px-4 lg:flex">
           {pricingData.map((pricing) => (
             <div
               key={pricing.id}
               className={cn(
-                "bg-white p-6 border-[5px] border-t-0 border-transparent shrink-0 flex-1 relative ",
+                "relative flex-1 shrink-0 border-[5px] border-t-0 border-transparent bg-white p-6 ",
                 pricing.highlight &&
-                  "border-[#F60] bg-[#FAF pt-[58px] lg:pt-6 bg-[#FAF7F2]",
+                  "bg-[#FAF border-[#F60] bg-[#FAF7F2] pt-[58px] lg:pt-6",
               )}
             >
               {/* best buy */}
               {pricing.highlight && (
-                <div className="absolute top-0 -right-[5px] -left-[5px] py-3 bottom-auto font-archivo tracking-[3.6px] font-medium text-white uppercase bg-[#F60] p-2 text-center text-xs lg:-top-9">
+                <div className="absolute -left-[5px] -right-[5px] bottom-auto top-0 bg-[#F60] p-2 py-3 text-center font-archivo text-xs font-medium uppercase tracking-[3.6px] text-white lg:-top-9">
                   Best Value
                 </div>
               )}
 
-              <h2 className="text-[40px] leading-[44px] font-normal">
+              <h2 className="text-[40px] font-normal leading-[44px]">
                 {pricing.pricingName}
               </h2>
-              <p className="font-archivo text-[14px] shrink-0 h-6">
+              <p className="h-6 shrink-0 font-archivo text-[14px]">
                 {pricing.description}{" "}
               </p>
 
-              <div className="flex gap-2 mt-4 font-archivo items-end -tracking-[1.2px]">
-                <div className="text-[60px] leading-[81px] font-semibold">
+              <div className="mt-4 flex items-end gap-2 font-archivo -tracking-[1.2px]">
+                <div className="text-[60px] font-semibold leading-[81px]">
                   ${pricing.originalPrice}
                 </div>
                 {/* <div className="line-through text-[34px] leading-[44px] text-[#8E8E8E] mb-3 font-normal">
@@ -80,20 +80,20 @@ const PricingBanner = () => {
                 </div> */}
               </div>
 
-              <div className="font-archivo text-[#8E8E8E] tracking-[0.16px] font-light">
+              <div className="font-archivo font-light tracking-[0.16px] text-[#8E8E8E]">
                 {pricing.billType}{" "}
               </div>
 
               <button
-                className="w-full tracking-wide  my-6 text-white font-semibold bg-[#6599FF] py-4 rounded-md font-archivo"
+                className="my-6 w-full  rounded-md bg-[#6599FF] py-4 font-archivo font-semibold tracking-wide text-white"
                 onClick={() => handlePricingButtonClick(pricing.productId)}
               >
                 Start Free Trial
               </button>
 
-              <div className="font-archivo space-y-3">
+              <div className="space-y-3 font-archivo">
                 {pricing.features.map((feature) => (
-                  <div key={feature.id} className="flex gap-3 items-start">
+                  <div key={feature.id} className="flex items-start gap-3">
                     <Image
                       src={feature.include ? checkGreenIcon : crossRedIcon}
                       className="mt-1"

@@ -1,8 +1,8 @@
 "use client";
 
 import AppIcons from "@/assets/icons";
-import { pricingDataProps } from "@/components/constant/pricing-data";
 import usePlanState from "../../../../store/plan-state";
+import { pricingDataProps } from "../data/pricing-data";
 import PriceDisplay from "./pricing-display";
 
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
@@ -36,7 +36,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         </div>
       </div>
 
-      <PriceDisplay price={plan.originalPrice} className="mx-8 my-auto" />
+      <PriceDisplay price={plan.price.monthly} className="mx-8 my-auto" />
     </button>
   );
 };

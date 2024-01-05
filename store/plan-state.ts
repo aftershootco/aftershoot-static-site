@@ -1,4 +1,4 @@
-import { pricingDataProps } from "@/components/constant/pricing-data";
+import { pricingDataProps } from "@/components/sale-page/data/pricing-data";
 import { create } from "zustand";
 
 type TState = {

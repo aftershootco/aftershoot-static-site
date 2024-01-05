@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 import * as Switch from "@radix-ui/react-switch";
-import APP_COLORS from "../constant/app-color";
+import APP_COLORS from "../../constant/app-color";
 
 type ToggleSwitchProps = {
   color?: string;
@@ -28,18 +28,18 @@ const ToggleSwitch = (props: ToggleSwitchProps) => {
       </label>
       <Switch.Root
         className={cn(
-          "w-[36px] h-[18px] bg-suvaGrey/35 rounded-full relative shadow-[1px] data-[state=checked]:bg-cornflowerBlue  outline-none cursor-default",
-          color && bgColor
+          "relative h-[18px] w-[36px] cursor-default rounded-full bg-suvaGrey/35 shadow-[1px]  outline-none data-[state=checked]:bg-cornflowerBlue",
+          color && bgColor,
         )}
         id="airplane-mode"
         // style={{ "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)" }}
         onCheckedChange={(e) => onToggle()}
       >
-        <Switch.Thumb className="block w-[15px] h-[15px] bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[19px]" />
+        <Switch.Thumb className="block h-[15px] w-[15px] translate-x-0.5 rounded-full bg-white transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]" />
       </Switch.Root>
 
       <label
-        className=" text-[15px] leading-none pr-[15px]"
+        className=" pr-[15px] text-[15px] leading-none"
         htmlFor="airplane-mode"
       >
         {labelAfter}

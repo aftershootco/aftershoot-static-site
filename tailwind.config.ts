@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         xl: "1178px",
-        "screen-1330": "1330px",
+        xxl: "1330px",
       },
       animation: {
         "fade-in": "fadeIn 2s ease-out", // Define a custom animation

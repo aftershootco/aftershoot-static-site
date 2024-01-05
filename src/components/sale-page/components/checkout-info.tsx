@@ -3,6 +3,7 @@
 import usePlanState from "../../../../store/plan-state";
 import BackButton from "./back-button";
 import PriceDisplay from "./pricing-display";
+import PromocodeInput from "./promocode-input";
 
 const CheckoutInfo = () => {
   const plantState = usePlanState();
@@ -30,6 +31,8 @@ const CheckoutInfo = () => {
               className="mx-8 my-auto"
             />
           </div>
+
+          <PromocodeInput />
         </div>
 
         {/* stripe form */}

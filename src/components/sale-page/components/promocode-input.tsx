@@ -8,7 +8,7 @@ const PromocodeInput = () => {
         className="h-full w-full py-[18px]"
         placeholder="Promo code (optional)"
       />
-      <button className="h-full border-l border-[#F2F2F2]  p-[18px] active:bg-[#f6f6f6ad] ">
+      <button className="h-full border-l border-[#F2F2F2] p-[18px] font-semibold text-suvaGrey active:bg-[#f6f6f6ad] ">
         Apply
       </button>
     </div>

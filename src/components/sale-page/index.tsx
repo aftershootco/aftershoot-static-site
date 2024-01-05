@@ -16,10 +16,12 @@ const Index = () => {
   }, []);
 
   return (
-    <AppContainer>
-      <PricingPlansInfo />
+    <>
+      <AppContainer>
+        <PricingPlansInfo />
+      </AppContainer>
       <CheckoutInfo />
-    </AppContainer>
+    </>
   );
 };
 

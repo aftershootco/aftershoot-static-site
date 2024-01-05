@@ -20,7 +20,7 @@ const links = [
 
 const CheckoutFoot = () => {
   return (
-    <div className="mt-14 flex justify-between gap-4">
+    <div className="mt-14 flex items-center justify-between gap-4">
       <div className="space-x-3">
         {links.map((link) => (
           <a

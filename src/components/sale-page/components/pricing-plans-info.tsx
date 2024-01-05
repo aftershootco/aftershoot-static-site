@@ -1,17 +1,23 @@
 "use client";
 
+import usePlanState from "../../../../store/plan-state";
+
 import ToggleSwitch from "@/components/ui/toggle-switch";
 import BackButton from "./back-button";
 import PlanList from "./pricing-plan-list";
 
 const PricingPlansInfo = () => {
+  const plantState = usePlanState();
+
   const handleSwitchToggle = () => {
-    console.log("switch toggle");
+    plantState.toggleBillingPeriod();
   };
 
   const handleOnBackButtonClick = () => {
     console.log("back button click");
   };
+
+  // if (plantState.selectedPlan) return null;
 
   return (
     <div className="rounded-[20px] bg-[#F6F6F6] p-[48px] font-archivo text-black">

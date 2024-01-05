@@ -8,6 +8,11 @@ import PriceDisplay from "./pricing-display";
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
   const plantState = usePlanState();
 
+  const billingPeriod = plantState.billingPeriod;
+
+  const displayPrice =
+    billingPeriod === "monthly" ? plan.price.monthly : plan.price.yearly;
+
   const handlePlanSelection = () => {
     plantState.setSelectedPlan(plan);
   };
@@ -36,7 +41,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         </div>
       </div>
 
-      <PriceDisplay price={plan.price.monthly} className="mx-8 my-auto" />
+      <PriceDisplay price={displayPrice} className="mx-8 my-auto" />
     </button>
   );
 };

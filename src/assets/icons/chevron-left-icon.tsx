@@ -1,30 +1,30 @@
 import * as React from "react";
 import { IconProps } from "../../../types";
 
-const CheckIcon = React.forwardRef<SVGSVGElement, IconProps>(
+const CheveronLeftIcon = React.forwardRef<SVGSVGElement, IconProps>(
   ({ color = "#000", size = 13, ...props }, forwardedRef) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
-        viewBox="0 0 16 16"
+        viewBox="0 0 20 20"
         fill="none"
         {...props}
         ref={forwardedRef}
       >
-        <g clip-path="url(#clip0_12_1661)">
+        <g clip-path="url(#clip0_12_1611)">
           <path
-            d="M3.3335 7.99999L6.66683 11.3333L13.3335 4.66666"
+            d="M12.5 5L7.5 10L12.5 15"
             stroke={color}
-            stroke-width="2"
+            stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </g>
         <defs>
-          <clipPath id="clip0_12_1661">
-            <rect width="16" height="16" fill="white" />
+          <clipPath id="clip0_12_1611">
+            <rect width="20" height="20" fill="white" />
           </clipPath>
         </defs>
       </svg>
@@ -32,6 +32,6 @@ const CheckIcon = React.forwardRef<SVGSVGElement, IconProps>(
   },
 );
 
-CheckIcon.displayName = "CheckIcon";
+CheveronLeftIcon.displayName = "CheveronLeftIcon";
 
-export default CheckIcon;
+export default CheveronLeftIcon;

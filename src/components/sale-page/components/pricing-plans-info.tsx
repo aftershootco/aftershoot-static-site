@@ -1,7 +1,7 @@
 "use client";
 
-import AppIcons from "@/assets/icons";
 import ToggleSwitch from "@/components/ui/toggle-switch";
+import BackButton from "./back-button";
 import PlanList from "./pricing-plan-list";
 
 const PricingPlansInfo = () => {
@@ -9,14 +9,16 @@ const PricingPlansInfo = () => {
     console.log("switch toggle");
   };
 
-  return (
-    <div className="bg-[#F6F6F6] font-archivo rounded-[20px] p-[48px] text-black">
-      <button className="flex items-center gap-1">
-        <AppIcons.CheveronLeftIcon /> Back
-      </button>
+  const handleOnBackButtonClick = () => {
+    console.log("back button click");
+  };
 
-      <div className="flex gap-8 items-center md:gap-16 mt-8">
-        <h1 className="text-[34px] -tracking-[1.02px] leading-[44px]">
+  return (
+    <div className="rounded-[20px] bg-[#F6F6F6] p-[48px] font-archivo text-black">
+      <BackButton onClick={handleOnBackButtonClick} />
+
+      <div className="mt-8 flex items-center gap-8 md:gap-16">
+        <h1 className="text-[34px] leading-[44px] -tracking-[1.02px]">
           Choose your plan
         </h1>
 
@@ -24,7 +26,7 @@ const PricingPlansInfo = () => {
           labelBefore="Monthly"
           labelAfter="Yearly"
           onToggle={handleSwitchToggle}
-          className="font-semibold translate-y-1"
+          className="translate-y-1 font-semibold"
         />
       </div>
 

@@ -6,7 +6,7 @@ type TState = {
 };
 
 type TActions = {
-  setSelectedPlan: (plan: pricingDataProps) => void;
+  setSelectedPlan: (plan: pricingDataProps | null) => void;
 };
 
 type TPlanState = TState & TActions;

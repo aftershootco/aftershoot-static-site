@@ -1,14 +1,24 @@
+"use client";
+
 import AppIcons from "@/assets/icons";
 import { pricingDataProps } from "@/components/constant/pricing-data";
+import usePlanState from "../../../../store/plan-state";
+import PriceDisplay from "./pricing-display";
 
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
-  console.log(plan);
+  const plantState = usePlanState();
+
+  const handlePlanSelection = () => {
+    plantState.setSelectedPlan(plan);
+  };
+
   return (
-    <div
+    <button
       key={plan.id}
-      className="p-4 rounded-md gap-4 border border-[#ABABAB] flex justify-between "
+      className="flex justify-between gap-4 rounded-md border border-[#ABABAB] p-4 shadow-sm md:p-6"
+      onClick={handlePlanSelection}
     >
-      <div>
+      <div className="text-left">
         <div>
           <h2 className="text-xl -tracking-[0.2px]">
             Aftershoot {plan.pricingName}
@@ -16,7 +26,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
           <p className="text-xs tracking-[0.24px]">{plan.description}</p>
         </div>
 
-        <div className="text-sm tracking-[0.14px] font-light space-y-2 mt-6">
+        <div className="mt-6 space-y-2 text-sm font-light tracking-[0.14px]">
           {plan.features.map((feature) => (
             <div key={feature.id} className="flex items-center gap-2">
               {feature.include && <AppIcons.CheckIcon />}
@@ -26,18 +36,8 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         </div>
       </div>
 
-      <div className="my-auto">
-        <div className="flex gap-2 items-end">
-          <div className="text-[45px] font-medium leading-[60px]">
-            ${plan.originalPrice}
-          </div>
-          <div className="leading-[34px] text-suvaGrey text-[20px]">/mo</div>
-        </div>
-        <p className="text-[15.15px] tracking-[0.302px] text-[#323232]">
-          {plan.billType}
-        </p>
-      </div>
-    </div>
+      <PriceDisplay price={plan.originalPrice} className="mx-8 my-auto" />
+    </button>
   );
 };
 

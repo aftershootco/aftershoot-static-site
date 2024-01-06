@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import * as Switch from "@radix-ui/react-switch";
+import { useRef } from "react";
 import APP_COLORS from "../../constant/app-color";
 
 type ToggleSwitchProps = {
@@ -19,6 +22,8 @@ const ToggleSwitch = (props: ToggleSwitchProps) => {
     onToggle,
   } = props;
 
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
   const bgColor = ``;
 
   return (
@@ -27,10 +32,16 @@ const ToggleSwitch = (props: ToggleSwitchProps) => {
         {labelBefore}
       </label>
       <Switch.Root
+        ref={buttonRef}
         className={cn(
-          "relative h-[18px] w-[36px] cursor-default rounded-full bg-suvaGrey/35 shadow-[1px]  outline-none data-[state=checked]:bg-cornflowerBlue",
-          color && bgColor,
+          "relative h-[18px] w-[36px] cursor-pointer rounded-full bg-suvaGrey/35 shadow-[1px]  outline-none data-[state=checked]:bg-cornflowerBlue",
         )}
+        style={{
+          backgroundColor:
+            buttonRef.current?.getAttribute("data-state") === "checked"
+              ? color
+              : APP_COLORS.CORNFLOWERBLUE,
+        }}
         id="airplane-mode"
         // style={{ "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)" }}
         onCheckedChange={(e) => onToggle()}

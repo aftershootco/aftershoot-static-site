@@ -1,6 +1,7 @@
 "use client";
 
 import AppIcons from "@/assets/icons";
+import { cn } from "@/utils/cn";
 import usePlanState from "../../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
 import PriceDisplay from "./pricing-display";
@@ -20,7 +21,11 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
   return (
     <button
       key={plan.id}
-      className="flex flex-col justify-between gap-4 rounded-md border border-[#ABABAB] p-4 shadow-sm md:flex-row md:p-6"
+      className={cn(
+        "flex flex-col justify-between gap-4 divide-purple-200 rounded-md border border-[#ABABAB] bg-white/70 p-4 shadow-sm transition-all active:scale-[99.5%] md:flex-row md:p-6",
+
+        plan.highlight && "border-2 border-[#474747] bg-white",
+      )}
       onClick={handlePlanSelection}
     >
       <div className="text-left">

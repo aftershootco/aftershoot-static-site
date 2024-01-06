@@ -20,7 +20,7 @@ const PricingPlansInfo = () => {
   // if (plantState.selectedPlan) return null;
 
   return (
-    <div className="rounded-[20px] bg-[#F6F6F6] p-4 font-archivo text-black md:p-[48px]">
+    <div className="rounded-[20px] bg-[#F6F6F6] p-6 font-archivo text-black md:p-[48px]">
       <BackButton onClick={handleOnBackButtonClick} />
 
       <div className="mt-8 items-center gap-8 md:flex md:gap-16">

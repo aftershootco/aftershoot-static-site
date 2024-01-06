@@ -30,28 +30,33 @@ const CheckoutInfo = () => {
   return (
     <div
       className={cn(
-        "absolute inset-0 z-50 flex h-screen translate-x-full transition-all duration-1000",
+        "fixed inset-0 z-50 flex max-h-screen translate-x-full overflow-y-scroll transition-all duration-1000",
         isPlanSelected && "translate-x-0 ",
       )}
     >
       <AppContainer className="my-auto">
-        <div className="rounded-[20px] bg-[#F6F6F6] p-6 font-archivo text-black md:p-[48px]">
+        <div className="rounded-[20px] bg-[#F6F6F6] px-6 py-8 font-archivo text-black md:p-[48px]">
           <BackButton onClick={handleOnBackButtonClick} />
           <div className="mt-8 flex flex-col gap-8 text-xl -tracking-[0.2px] md:flex-row md:gap-[60px]">
             <div className="flex-1">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                 <div>
-                  <h1>Subscribe to Aftershoot {ACTIVE_PLAN?.pricingName}</h1>
+                  <h1 className="text-2xl sm:text-base">
+                    Subscribe to Aftershoot {ACTIVE_PLAN?.pricingName}
+                  </h1>
                   <p className="text-sm tracking-[0.14px] text-suvaGrey">
                     {` Then $${ACTIVE_PLAN?.price.yearly} per year after the coupon expires`}
                   </p>
                 </div>
-                <PriceDisplay price={displayPrice} className="mx-8 my-auto" />
+                <PriceDisplay
+                  price={displayPrice}
+                  className="mx-8 my-auto text-[40px]"
+                />
               </div>
 
               <PromocodeInput />
 
-              <div className="mt-16">
+              <div className="mt-8 md:mt-14">
                 <h2 className="font-semibold">Review your subscription</h2>
 
                 <div className="mt-8 space-y-4">

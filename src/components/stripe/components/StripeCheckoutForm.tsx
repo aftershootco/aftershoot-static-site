@@ -1,5 +1,6 @@
 "use client";
 
+import AppButton from "@/components/ui/AppButton";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -16,7 +17,7 @@ const StripeCheckoutForm = () => {
       <CardExpiryElement />
       <CardCvcElement />
 
-      <button>Submit</button>
+      <AppButton className="my-8 w-full">Next</AppButton>
     </form>
   );
 };

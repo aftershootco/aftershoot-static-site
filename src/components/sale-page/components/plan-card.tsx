@@ -1,6 +1,6 @@
 "use client";
 
-import AppIcons from "@/assets/icons";
+import AppIconComponent from "@/components/ui/icons";
 import { cn } from "@/utils/cn";
 import usePlanState from "../../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
@@ -39,7 +39,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         <div className="mt-6 space-y-2 text-sm font-light tracking-[0.14px]">
           {plan.features.map((feature) => (
             <div key={feature.id} className="flex items-center gap-2">
-              {feature.include && <AppIcons.CheckIcon />}
+              {feature.include && <AppIconComponent.CheckIcon />}
               <div>{feature.featureName}</div>
             </div>
           ))}

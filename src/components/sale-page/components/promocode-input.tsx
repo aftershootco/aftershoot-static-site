@@ -1,9 +1,9 @@
-import AppIcons from "@/assets/icons";
+import AppIconComponent from "@/components/ui/icons";
 
 const PromocodeInput = () => {
   return (
     <div className="mt-6 flex items-center gap-2 rounded-md border border-[#F2F2F2] bg-white  pl-[18px] text-sm font-light shadow-sm">
-      <AppIcons.CouponIcon />
+      <AppIconComponent.CouponIcon />
       <input
         className="h-full w-full py-[18px] focus:outline-none"
         placeholder="Promo code (optional)"

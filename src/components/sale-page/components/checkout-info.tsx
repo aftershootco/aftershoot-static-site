@@ -6,6 +6,7 @@ import AppContainer from "@/components/ui/site/app-containr";
 import { cn } from "@/utils/cn";
 import BackButton from "./back-button";
 import CheckoutFoot from "./checkout-foot";
+import CheckoutFormContainer from "./checkout-form-container";
 import PriceDisplay from "./pricing-display";
 import PromocodeInput from "./promocode-input";
 
@@ -90,9 +91,7 @@ const CheckoutInfo = () => {
             </div>
 
             {/* stripe form */}
-            <div className="max-w-[450px] flex-1 rounded-md bg-white shadow-xl">
-              <div className="p-4">placeholder</div>
-            </div>
+            <CheckoutFormContainer />
 
             <CheckoutFoot className=" mt-8 md:hidden" />
           </div>

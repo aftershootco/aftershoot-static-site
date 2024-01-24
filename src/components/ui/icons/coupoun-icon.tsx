@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconProps } from "../../../types";
+import { IconProps } from "../../../../types";
 
 const CouponIcon = React.forwardRef<SVGSVGElement, IconProps>(
   ({ color = "#777777", size = 20, ...props }, forwardedRef) => {

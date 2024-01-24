@@ -1,4 +1,4 @@
-import PowerByStripe from "@/assets/icons/power-by-stripe";
+import PowerByStripe from "@/components/ui/icons/power-by-stripe";
 import { cn } from "@/utils/cn";
 
 const links = [

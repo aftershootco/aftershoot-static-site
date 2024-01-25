@@ -17,12 +17,6 @@ const CheckoutFormContainer = () => {
       </div>
 
       <StripeCheckoutForm />
-
-      {/* <p className="text-xs tracking-[0.24px] text-suvaGrey">
-        By confirming your subscription, you allow AfterShoot Inc. to charge
-        your card for this payment and future payments in accordance with their
-        terms. You can always cancel your subscription.
-      </p> */}
     </div>
   );
 };

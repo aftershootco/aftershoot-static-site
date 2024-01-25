@@ -17,7 +17,7 @@ const StripeCheckout = () => {
         stripe={stripePromise}
         options={{
           clientSecret:
-            "seti_1OcPYrCYznn1uZfNAWlNdbtM_secret_PRI9YmyKY9diWHclGAwLIY1UvEqIesy",
+            "seti_1OcS2HCYznn1uZfNj4YBW2ch_secret_PRKht87XHN1uZL1djSQnFiSYwOfAxS4",
         }}
       >
         <PaymentForm />

@@ -7,12 +7,15 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
+  const search = useSearchParams();
+
+  const email = search.get("email");
 
   const triggerToast = useAppTaost();
 
@@ -20,8 +23,6 @@ const PaymentForm = () => {
     if (!stripe || !elements) {
       return;
     }
-
-    console.log("elements", elements);
 
     const result = await stripe.confirmSetup({
       elements,
@@ -35,8 +36,8 @@ const PaymentForm = () => {
     } else {
       console.log("success", result);
       triggerToast("Payment success", "success");
-      // redirect here
-      // https://aftershoot.com/thank-you/
+      // need to hit and api here
+      // router.push("https://aftershoot.com/thank-you/");
       // Your customer will be redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer will be redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
@@ -55,7 +56,7 @@ const PaymentForm = () => {
         options={{
           defaultValues: {
             billingDetails: {
-              email: "arvind@aftershoot.com",
+              email: email ?? "none",
             },
           },
         }}

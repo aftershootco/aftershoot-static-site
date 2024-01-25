@@ -2,7 +2,7 @@
 
 import AppIconComponent from "@/components/ui/icons";
 import { cn } from "@/utils/cn";
-import usePlanState from "../../../../store/plan-state";
+import usePlanState from "../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
 import PriceDisplay from "./pricing-display";
 

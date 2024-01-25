@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import usePlanState from "../../../../store/plan-state";
+import usePlanState from "../../../store/plan-state";
 
 type PriceDisplayProps = {
   price?: number;

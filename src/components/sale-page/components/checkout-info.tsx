@@ -1,6 +1,6 @@
 "use client";
 
-import usePlanState from "../../../../store/plan-state";
+import usePlanState from "../../../store/plan-state";
 
 import AppContainer from "@/components/ui/site/app-containr";
 import { cn } from "@/utils/cn";

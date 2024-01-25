@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import usePlanState from "../../../../store/plan-state";
+import usePlanState from "../../../store/plan-state";
 
 type ActiveOverlayProps = {
   handleClick?: () => void;

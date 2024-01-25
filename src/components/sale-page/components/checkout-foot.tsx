@@ -19,11 +19,11 @@ const links = [
   },
 ];
 
-const CheckoutFoot = ({ className }: { className: string }) => {
+const CheckoutFoot = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "mt-14 flex items-center justify-between gap-4",
+        "mt-8 flex items-center justify-between gap-4",
         className && className,
       )}
     >

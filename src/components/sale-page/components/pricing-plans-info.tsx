@@ -1,6 +1,6 @@
 "use client";
 
-import usePlanState from "../../../../store/plan-state";
+import usePlanState from "../../../store/plan-state";
 
 import ToggleSwitch from "@/components/ui/toggle-switch";
 import BackButton from "./back-button";

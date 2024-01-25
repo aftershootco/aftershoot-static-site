@@ -1,15 +1,20 @@
 "use client";
 
 import AppButton from "@/components/ui/AppButton";
+import useAppTaost from "@/hooks/useAppTaost";
 import {
   PaymentElement,
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { useRouter } from "next/navigation";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
+
+  const triggerToast = useAppTaost();
 
   const handleSubmit = async () => {
     if (!stripe || !elements) {
@@ -25,9 +30,13 @@ const PaymentForm = () => {
 
     if (result.error) {
       // Display result.error.message in your UI. TOAST
+      triggerToast(result.error.message ?? "Error", "failure");
       console.log(result.error.message);
     } else {
       console.log("success", result);
+      triggerToast("Payment success", "success");
+      // redirect here
+      // https://aftershoot.com/thank-you/
       // Your customer will be redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer will be redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.

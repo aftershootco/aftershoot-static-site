@@ -1,3 +1,4 @@
+import { AppToast } from "@/hooks/useAppTaost";
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${archivo.variable} ${erodeVariable.style}`}>
+        <AppToast />
         {children}
       </body>
     </html>

@@ -7,7 +7,7 @@ export type TData = {
   client_secret: string;
 };
 
-const getStripeClientSecrete = async (email: string) => {
+const getStripeClientSecret = async (email: string) => {
   const data = {
     email: email,
   };
@@ -16,9 +16,9 @@ const getStripeClientSecrete = async (email: string) => {
     const response = await axios.post(API_UTL, data);
     return response.data as TData;
   } catch (error) {
-    console.log("Error in getStripeClientSecrete", error);
+    console.log("Error in getStripeClientSecret", error);
     return null;
   }
 };
 
-export default getStripeClientSecrete;
+export default getStripeClientSecret;

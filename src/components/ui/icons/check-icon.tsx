@@ -13,13 +13,13 @@ const CheckIcon = React.forwardRef<SVGSVGElement, IconProps>(
         {...props}
         ref={forwardedRef}
       >
-        <g clip-path="url(#clip0_12_1661)">
+        <g clipPath="url(#clip0_12_1661)">
           <path
             d="M3.3335 7.99999L6.66683 11.3333L13.3335 4.66666"
             stroke={color}
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>

@@ -4,11 +4,12 @@ import usePlanState from "../../../store/plan-state";
 
 import AppContainer from "@/components/ui/site/app-containr";
 import { cn } from "@/utils/cn";
+import { getFromLocalStorage } from "@/utils/recordTrialStartLS";
+import { useEffect } from "react";
 import BackButton from "./back-button";
 import CheckoutFoot from "./checkout-foot";
 import CheckoutFormContainer from "./checkout-form-container";
 import PriceDisplay from "./pricing-display";
-import PromocodeInput from "./promocode-input";
 
 const CheckoutInfo = () => {
   const plantState = usePlanState();
@@ -27,6 +28,11 @@ const CheckoutInfo = () => {
   const handleOnBackButtonClick = () => {
     plantState.setSelectedPlan(null);
   };
+
+  useEffect(() => {
+    const trialStarted = getFromLocalStorage("trialStarted");
+    console.log("-------", trialStarted);
+  }, [isPlanSelected]);
 
   return (
     <div
@@ -55,7 +61,7 @@ const CheckoutInfo = () => {
                 />
               </div>
 
-              <PromocodeInput />
+              {/* <PromocodeInput /> */}
 
               <div className="mt-8 md:mt-14">
                 <h2 className="font-semibold">Review your subscription</h2>

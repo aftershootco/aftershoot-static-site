@@ -13,13 +13,13 @@ const CheveronLeftIcon = React.forwardRef<SVGSVGElement, IconProps>(
         {...props}
         ref={forwardedRef}
       >
-        <g clip-path="url(#clip0_12_1611)">
+        <g clipPath="url(#clip0_12_1611)">
           <path
             d="M12.5 5L7.5 10L12.5 15"
             stroke={color}
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>

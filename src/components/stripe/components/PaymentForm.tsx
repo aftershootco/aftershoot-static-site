@@ -9,7 +9,10 @@ import {
 } from "@stripe/react-stripe-js";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import LoadingIcon from "@/components/ui/icons/loading-icon";
 import usePlanState from "@/store/plan-state";
+import { addToLocalStorage } from "@/utils/recordTrialStartLS";
+import { useState } from "react";
 import startTrial from "../handler/startTrial";
 
 const PaymentForm = () => {
@@ -17,20 +20,28 @@ const PaymentForm = () => {
   const elements = useElements();
   const router = useRouter();
   const search = useSearchParams();
-
+  const email = search.get("email");
   const plantState = usePlanState();
+  const triggerToast = useAppTaost();
+
+  const keyToAdd = "trialStarted";
 
   const SELECTED_PLAN = plantState.selectedPlan;
   const SELECTED_PRODUCT_ID = SELECTED_PLAN?.productId;
 
-  const email = search.get("email");
+  const [startTrialLoading, setStartTrialLoading] = useState(false);
 
-  const triggerToast = useAppTaost();
+  type startTrial = {
+    id: string;
+    productId: string;
+  };
 
   const handleSubmit = async () => {
     if (!stripe || !elements) {
       return;
     }
+
+    setStartTrialLoading(true);
 
     const result = await stripe.confirmSetup({
       elements,
@@ -38,30 +49,28 @@ const PaymentForm = () => {
     });
 
     if (result.error) {
-      // Display result.error.message in your UI. TOAST
       triggerToast(result.error.message ?? "Error", "failure");
-      console.log(result.error.message);
     } else {
-      console.log("SUCCESS", result);
-      const res = await startTrial(result.setupIntent.id, SELECTED_PRODUCT_ID!);
-      console.log("------------", res);
+      const res = await startTrial(
+        result.setupIntent?.id,
+        SELECTED_PRODUCT_ID!,
+      );
 
       if (res?.success) {
         triggerToast("Payment success", "success");
         router.push("https://aftershoot.com/thank-you/");
+        addToLocalStorage("trialStarted", true);
+        addToLocalStorage("plan", SELECTED_PLAN?.pricingName);
+      } else {
+        triggerToast("Something went wrong!", "failure");
       }
-
-      // need to hit and api here
-      // router.push("https://aftershoot.com/thank-you/");
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      setStartTrialLoading(false);
     }
+    setStartTrialLoading(false);
   };
 
   const handleButton = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     handleSubmit();
   };
 
@@ -77,8 +86,8 @@ const PaymentForm = () => {
         }}
       />
 
-      <AppButton type="submit" className="mt-8 w-full" disabled={!stripe}>
-        Next
+      <AppButton type="submit" className="mt-8 w-full">
+        {startTrialLoading ? <LoadingIcon /> : "Next"}
       </AppButton>
     </form>
   );

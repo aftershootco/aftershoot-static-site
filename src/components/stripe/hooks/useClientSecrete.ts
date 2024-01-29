@@ -1,21 +1,17 @@
 import useSWR from "swr";
-import getStripeClientSecrete from "../handler/getStripeClientSecrete";
+import getStripeClientSecret from "../handler/getStripeClientSecret";
 
-function useStripeClientSecrete(email: string) {
-  const fetcher = () => {
-    return getStripeClientSecrete(email);
-  };
-
+function useStripeClientSecret(email: string) {
   const { data, error, isLoading } = useSWR(
     `/api/stripe/get-client-secret`,
-    fetcher,
+    () => getStripeClientSecret(email),
   );
 
   return {
-    stripeClientSecrete: data,
-    isStripeClientSecreteLoading: isLoading,
-    isStripeClientSecreteError: error,
+    stripeClientSecret: data,
+    isStripeClientSecretLoading: isLoading,
+    isStripeClientSecretError: error,
   };
 }
 
-export default useStripeClientSecrete;
+export default useStripeClientSecret;

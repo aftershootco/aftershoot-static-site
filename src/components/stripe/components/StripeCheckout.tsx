@@ -1,28 +1,27 @@
 "use client";
 
 import { Elements } from "@stripe/react-stripe-js";
-
+import { loadStripe } from "@stripe/stripe-js";
+import { useSearchParams } from "next/navigation";
 import PaymentForm from "./PaymentForm";
 
-import { loadStripe } from "@stripe/stripe-js";
-
 const stripePublishKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
-
 const stripePromise = loadStripe(stripePublishKey);
 
-import useStripeClientSecrete from "../hooks/useClientSecrete";
+import useStripeClientSecret from "../hooks/useClientSecrete";
 
 const StripeCheckout = () => {
-  const { stripeClientSecrete } = useStripeClientSecrete(
-    "arvind@aftershoot.com",
-  );
+  const search = useSearchParams();
+  const email = search.get("email");
+
+  const { stripeClientSecret } = useStripeClientSecret(email!);
 
   // console.log(stripeClientSecrete);
-  if (!stripeClientSecrete) {
+  if (!stripeClientSecret?.client_secret) {
     return null;
   }
 
-  const { success, client_secret } = stripeClientSecrete;
+  const { success, client_secret } = stripeClientSecret;
 
   // console.log(success, client_secret);
 

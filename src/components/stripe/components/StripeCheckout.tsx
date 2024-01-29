@@ -10,14 +10,28 @@ const stripePublishKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
 
 const stripePromise = loadStripe(stripePublishKey);
 
+import useStripeClientSecrete from "../hooks/useClientSecrete";
+
 const StripeCheckout = () => {
+  const { stripeClientSecrete } = useStripeClientSecrete(
+    "arvind@aftershoot.com",
+  );
+
+  // console.log(stripeClientSecrete);
+  if (!stripeClientSecrete) {
+    return null;
+  }
+
+  const { success, client_secret } = stripeClientSecrete;
+
+  // console.log(success, client_secret);
+
   return (
     <div>
       <Elements
         stripe={stripePromise}
         options={{
-          clientSecret:
-            "seti_1OcS2HCYznn1uZfNj4YBW2ch_secret_PRKht87XHN1uZL1djSQnFiSYwOfAxS4",
+          clientSecret: client_secret,
         }}
       >
         <PaymentForm />

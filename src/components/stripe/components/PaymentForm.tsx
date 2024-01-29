@@ -9,11 +9,19 @@ import {
 } from "@stripe/react-stripe-js";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import usePlanState from "@/store/plan-state";
+import startTrial from "../handler/startTrial";
+
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
   const search = useSearchParams();
+
+  const plantState = usePlanState();
+
+  const SELECTED_PLAN = plantState.selectedPlan;
+  const SELECTED_PRODUCT_ID = SELECTED_PLAN?.productId;
 
   const email = search.get("email");
 
@@ -34,8 +42,15 @@ const PaymentForm = () => {
       triggerToast(result.error.message ?? "Error", "failure");
       console.log(result.error.message);
     } else {
-      console.log("success", result);
-      triggerToast("Payment success", "success");
+      console.log("SUCCESS", result);
+      const res = await startTrial(result.setupIntent.id, SELECTED_PRODUCT_ID!);
+      console.log("------------", res);
+
+      if (res?.success) {
+        triggerToast("Payment success", "success");
+        router.push("https://aftershoot.com/thank-you/");
+      }
+
       // need to hit and api here
       // router.push("https://aftershoot.com/thank-you/");
       // Your customer will be redirected to your `return_url`. For some payment

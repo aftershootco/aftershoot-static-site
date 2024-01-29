@@ -1,13 +1,6 @@
-import { AmexIcon, JCBIcon, MasterCardIcon, VisaIcon } from "@/assets/icons";
-import StripeCheckoutForm from "@/components/stripe/components/StripeCheckout";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+"use client";
 
-const CardIcons: { [key: string]: string | StaticImport } = {
-  visa: VisaIcon,
-  mastercard: MasterCardIcon,
-  amex: AmexIcon,
-  jcb: JCBIcon,
-};
+import StripeCheckout from "@/components/stripe/components/StripeCheckout";
 
 const CheckoutFormContainer = () => {
   return (
@@ -16,7 +9,7 @@ const CheckoutFormContainer = () => {
         <div className="text-2xl font-bold">Card Info</div>
       </div>
 
-      <StripeCheckoutForm />
+      <StripeCheckout />
     </div>
   );
 };

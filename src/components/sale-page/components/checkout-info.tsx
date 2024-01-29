@@ -15,14 +15,14 @@ const CheckoutInfo = () => {
 
   const isPlanSelected = plantState.selectedPlan;
 
-  const ACTIVE_PLAN = plantState.selectedPlan;
+  const SELECTED_PLAN = plantState.selectedPlan;
 
   const billingPeriod = plantState.billingPeriod;
 
   const displayPrice =
     billingPeriod === "monthly"
-      ? ACTIVE_PLAN?.price.monthly
-      : ACTIVE_PLAN?.price.yearly;
+      ? SELECTED_PLAN?.price.monthly
+      : SELECTED_PLAN?.price.yearly;
 
   const handleOnBackButtonClick = () => {
     plantState.setSelectedPlan(null);
@@ -43,10 +43,10 @@ const CheckoutInfo = () => {
               <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                 <div>
                   <h1 className="text-2xl sm:text-base">
-                    Subscribe to Aftershoot {ACTIVE_PLAN?.pricingName}
+                    Subscribe to Aftershoot {SELECTED_PLAN?.pricingName}
                   </h1>
                   <p className="text-sm tracking-[0.14px] text-suvaGrey">
-                    {` Then $${ACTIVE_PLAN?.price.yearly} per year after the coupon expires`}
+                    {` Then $${SELECTED_PLAN?.price.yearly} per year after the coupon expires`}
                   </p>
                 </div>
                 <PriceDisplay
@@ -63,10 +63,10 @@ const CheckoutInfo = () => {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="text-sm font-light tracking-[0.14px]">
-                      Aftershoot {ACTIVE_PLAN?.pricingName}
+                      Aftershoot {SELECTED_PLAN?.pricingName}
                     </div>
                     <div>
-                      {ACTIVE_PLAN?.price.yearly ?? "00"}
+                      {SELECTED_PLAN?.price.yearly ?? "00"}
                       <span className="text-suvaGrey">/year</span>
                     </div>
                   </div>
@@ -75,14 +75,14 @@ const CheckoutInfo = () => {
                     <div className="text-sm font-light tracking-[0.14px]">
                       Subtotal
                     </div>
-                    <div>{ACTIVE_PLAN?.price.yearly ?? "00"}</div>
+                    <div>{SELECTED_PLAN?.price.yearly ?? "00"}</div>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm font-light tracking-[0.14px]">
                       Total
                     </div>
-                    <div>{ACTIVE_PLAN?.price.yearly ?? "00"}</div>
+                    <div>{SELECTED_PLAN?.price.yearly ?? "00"}</div>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 import usePlanState from "../../../store/plan-state";
 
 import AppContainer from "@/components/ui/site/app-containr";
+import useAppTaost from "@/hooks/useAppTaost";
 import { cn } from "@/utils/cn";
 import { getFromLocalStorage } from "@/utils/recordTrialStartLS";
 import { useEffect } from "react";
@@ -15,10 +16,10 @@ const CheckoutInfo = () => {
   const plantState = usePlanState();
 
   const isPlanSelected = plantState.selectedPlan;
-
   const SELECTED_PLAN = plantState.selectedPlan;
-
   const billingPeriod = plantState.billingPeriod;
+
+  const triggerToast = useAppTaost();
 
   const displayPrice =
     billingPeriod === "monthly"
@@ -32,6 +33,10 @@ const CheckoutInfo = () => {
   useEffect(() => {
     const trialStarted = getFromLocalStorage("trialStarted");
     console.log("-------", trialStarted);
+    if (trialStarted) {
+      triggerToast("You have already started your trial", "failure");
+      plantState.setSelectedPlan(null);
+    }
   }, [isPlanSelected]);
 
   return (

@@ -1,27 +1,15 @@
 "use client";
 
 import AppIconComponent from "@/components/ui/icons";
-import useAddQueryParam from "@/hooks/useAddQueryParam";
+import useQueryUtil from "@/hooks/useQueryUtil";
 import { cn } from "@/utils/cn";
-import { usePathname, useRouter } from "next/navigation";
 import usePlanState from "../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
 import PriceDisplay from "./pricing-display";
 
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
   const plantState = usePlanState();
-  const router = useRouter();
-  const pathname = usePathname();
-  const updateQueryParams = useAddQueryParam();
-
-  console.log("pathname", pathname);
-
-  // const handleUpdateQueryParams = (value: string) => {
-  //   const newParams = new URLSearchParams();
-  //   newParams.set("p", value);
-  //   router.push(createUrl("x", newParams));
-  // };
-
+  const { updateQueryParams } = useQueryUtil();
   const billingPeriod = plantState.billingPeriod;
 
   const displayPrice =

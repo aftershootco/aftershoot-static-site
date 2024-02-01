@@ -4,9 +4,11 @@ import usePlanState from "../../../store/plan-state";
 
 import AppContainer from "@/components/ui/site/app-containr";
 import useAppTaost from "@/hooks/useAppTaost";
+import useQueryUtil from "@/hooks/useQueryUtil";
 import { cn } from "@/utils/cn";
 import { getFromLocalStorage } from "@/utils/recordTrialStartLS";
 import { useEffect } from "react";
+import pricingData from "../data/pricing-data";
 import BackButton from "./back-button";
 import CheckoutFoot from "./checkout-foot";
 import CheckoutFormContainer from "./checkout-form-container";
@@ -20,6 +22,7 @@ const CheckoutInfo = () => {
   const billingPeriod = plantState.billingPeriod;
 
   const triggerToast = useAppTaost();
+  const { clearQueryParams, getQueryParams } = useQueryUtil();
 
   const displayPrice =
     billingPeriod === "monthly"
@@ -28,16 +31,27 @@ const CheckoutInfo = () => {
 
   const handleOnBackButtonClick = () => {
     plantState.setSelectedPlan(null);
+    clearQueryParams();
   };
 
   useEffect(() => {
     const trialStarted = getFromLocalStorage("trialStarted");
-    console.log("-------", trialStarted);
     if (trialStarted) {
       triggerToast("You have already started your trial", "failure");
       plantState.setSelectedPlan(null);
     }
   }, [isPlanSelected]);
+
+  useEffect(() => {
+    const priceSelectionInQuery = getQueryParams("p");
+    // console.log(priceSelectionInQuery);
+    if (priceSelectionInQuery) {
+      const selectedPlan = pricingData.find(
+        (plan) => plan.id === priceSelectionInQuery,
+      );
+      plantState.setSelectedPlan(selectedPlan ?? null);
+    }
+  }, []);
 
   return (
     <div
@@ -61,7 +75,7 @@ const CheckoutInfo = () => {
                   </p>
                 </div>
                 <PriceDisplay
-                  price={displayPrice}
+                  price={displayPrice ?? 0}
                   className="mx-8 my-auto text-[40px]"
                 />
               </div>

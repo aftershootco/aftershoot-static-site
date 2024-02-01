@@ -3,15 +3,14 @@
 
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import siteIcon from "./components/icons/Logo.png";
 import checkGreenIcon from "./components/icons/check-green.svg";
 import crossRedIcon from "./components/icons/cross-red.svg";
 import pricingData from "./data/pricing-data";
 
 const PricingBanner = () => {
-  const searchParams = useSearchParams();
-  const userEmail = searchParams.get("email");
+  // const searchParams = useSearchParams();
+  // const userEmail = searchParams.get("email");
 
   // console.log(userEmail);
 
@@ -21,12 +20,15 @@ const PricingBanner = () => {
   };
 
   const handlePricingButtonClick = (productId: string) => {
-    if (!userEmail) {
-      console.log("user email not found");
-      return;
-    }
-    const stripLink = `https://us-central1-aftershoot-co.cloudfunctions.net/offer-banner?email=${userEmail}&product-id=${productId}`;
-    window.location.href = stripLink;
+    // if (!userEmail) {
+    //   console.log("user email not found");
+    //   return;
+    // }
+
+    const link =
+      "https://secure.aftershoot.com/b/28o2aU7ak9y68G400y?prefilled_promo_code=IMAGING24";
+    // const stripLink = `https://us-central1-aftershoot-co.cloudfunctions.net/offer-banner?email=${userEmail}&product-id=${productId}`;
+    window.location.href = link;
   };
 
   return (

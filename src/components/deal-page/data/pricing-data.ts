@@ -34,6 +34,7 @@ const pricingData = [
       },
     ],
     productId: "price_1IxujVCYznn1uZfNYhWHoKa0",
+    productKey: "28o2aU7ak9y68G400y",
     redirectLink:
       "https://secure.aftershoot.com/b/28o2aU7ak9y68G400y?prefilled_promo_code",
   },
@@ -84,6 +85,7 @@ const pricingData = [
       },
     ],
     productId: "price_1NltSzCYznn1uZfNgmm8YUFW",
+    productKey: "eVaaHq52c4dM4pO00t",
     redirectLink:
       "https://secure.aftershoot.com/b/eVaaHq52c4dM4pO00t?prefilled_promo_code",
   },
@@ -140,6 +142,7 @@ const pricingData = [
       },
     ],
     productId: "price_1NltU8CYznn1uZfNAQlw880G",
+    productKey: "00gdTC52c6lU7C0dRp",
     redirectLink:
       "https://secure.aftershoot.com/b/00gdTC52c6lU7C0dRp?prefilled_promo_code",
   },
@@ -209,6 +212,7 @@ const pricingData = [
       },
     ],
     productId: "price_1NnJOFCYznn1uZfNRbwqVWoq",
+    productKey: "eVa7vedyIh0y8G414A",
     redirectLink:
       "https://secure.aftershoot.com/b/eVa7vedyIh0y8G414A?prefilled_promo_code",
   },

@@ -3,14 +3,15 @@
 
 import { cn } from "@/utils/cn";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import siteIcon from "./components/icons/Logo.png";
 import checkGreenIcon from "./components/icons/check-green.svg";
 import crossRedIcon from "./components/icons/cross-red.svg";
 import pricingData from "./data/pricing-data";
 
 const PricingBanner = () => {
-  // const searchParams = useSearchParams();
-  // const userEmail = searchParams.get("email");
+  const searchParams = useSearchParams();
+  const userEmail = searchParams.get("email");
 
   // console.log(userEmail);
 
@@ -19,15 +20,20 @@ const PricingBanner = () => {
     window.location.href = redirectURL;
   };
 
-  const handlePricingButtonClick = (productId: string) => {
-    // if (!userEmail) {
-    //   console.log("user email not found");
-    //   return;
-    // }
+  const handlePricingButtonClick = (productKey: string) => {
+    if (!userEmail) {
+      console.log("user email not found");
+      return;
+    }
 
-    const link =
-      "https://secure.aftershoot.com/b/28o2aU7ak9y68G400y?prefilled_promo_code=IMAGING24";
+    const promoCode = "IMAGING24";
+
+    // const link = `${productKey}=IMAGING24`;
+    // "https://secure.aftershoot.com/b/28o2aU7ak9y68G400y?prefilled_promo_code=IMAGING24";
     // const stripLink = `https://us-central1-aftershoot-co.cloudfunctions.net/offer-banner?email=${userEmail}&product-id=${productId}`;
+
+    const link = `https://secure.aftershoot.com/b/${productKey}?prefilled_promo_code=${promoCode}&prefilled_email=${userEmail}`;
+
     window.location.href = link;
   };
 
@@ -89,7 +95,7 @@ const PricingBanner = () => {
 
               <button
                 className="my-6 w-full  rounded-md bg-[#6599FF] py-4 font-archivo font-semibold tracking-wide text-white"
-                onClick={() => handlePricingButtonClick(pricing.productId)}
+                onClick={() => handlePricingButtonClick(pricing.productKey)}
               >
                 Claim the Deal
               </button>

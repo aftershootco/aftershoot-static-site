@@ -82,11 +82,11 @@ const PricingBanner = () => {
 
               <div className="mt-4 flex items-end gap-2 font-archivo -tracking-[1.2px]">
                 <div className="text-[60px] font-semibold leading-[81px]">
+                  ${pricing.discountedPrice}
+                </div>
+                <div className="mb-3 text-[34px] font-normal leading-[44px] text-[#8E8E8E] line-through">
                   ${pricing.originalPrice}
                 </div>
-                {/* <div className="line-through text-[34px] leading-[44px] text-[#8E8E8E] mb-3 font-normal">
-                  ${pricing.originalPrice}
-                </div> */}
               </div>
 
               <div className="font-archivo font-light tracking-[0.16px] text-[#8E8E8E]">

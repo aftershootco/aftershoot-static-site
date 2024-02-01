@@ -1,4 +1,6 @@
 // import cn from "cn";
+"use client";
+
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -14,7 +16,7 @@ const PricingBanner = () => {
   // console.log(userEmail);
 
   const handleSitelogoClick = () => {
-    const redirectURL = "http://aftershoot.com/holiday-offer";
+    const redirectURL = "http://aftershoot.com";
     window.location.href = redirectURL;
   };
 
@@ -43,8 +45,7 @@ const PricingBanner = () => {
         </div>
 
         <h1 className="mx-auto mt-24 w-full max-w-[780px] px-6 text-center text-[52px] leading-[52px] tracking-[-1.56px] md:text-[88px] md:leading-[88px] md:tracking-[-2.56px]">
-          Start Your 30 Days Free Trial Now{" "}
-          <span className="text-[#F60]">📸</span>
+          Grab Your 25% Discount Now
         </h1>
 
         <div className=" mx-auto my-32 grid w-full max-w-[87rem] flex-wrap gap-4 px-4 text-black sm:grid-cols-2 md:px-4 lg:flex">
@@ -88,7 +89,7 @@ const PricingBanner = () => {
                 className="my-6 w-full  rounded-md bg-[#6599FF] py-4 font-archivo font-semibold tracking-wide text-white"
                 onClick={() => handlePricingButtonClick(pricing.productId)}
               >
-                Start Free Trial
+                Claim the Deal
               </button>
 
               <div className="space-y-3 font-archivo">

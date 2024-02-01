@@ -24,9 +24,14 @@ const PricingPlansInfo = () => {
       <BackButton onClick={handleOnBackButtonClick} />
 
       <div className="mt-8 items-center gap-8 md:flex md:gap-16">
-        <h1 className="text-[34px] leading-[44px] -tracking-[1.02px]">
-          Choose your plan
-        </h1>
+        <div>
+          <h1 className="text-[34px] leading-[44px] -tracking-[1.02px]">
+            Choose your plan
+          </h1>
+          <p className="text-sm tracking-[0.24px] text-black/70">
+            30-Day Free Trial, Then $xx Per Year / Month
+          </p>
+        </div>
 
         <ToggleSwitch
           labelBefore="Monthly"

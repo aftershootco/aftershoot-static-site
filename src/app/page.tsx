@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main className="font-archivo">Hello</main>;
+  return <main className="font-archivo">Aftershoot static site</main>;
 }

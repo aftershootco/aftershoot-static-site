@@ -1,13 +1,26 @@
 "use client";
 
 import AppIconComponent from "@/components/ui/icons";
+import useAddQueryParam from "@/hooks/useAddQueryParam";
 import { cn } from "@/utils/cn";
+import { usePathname, useRouter } from "next/navigation";
 import usePlanState from "../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
 import PriceDisplay from "./pricing-display";
 
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
   const plantState = usePlanState();
+  const router = useRouter();
+  const pathname = usePathname();
+  const updateQueryParams = useAddQueryParam();
+
+  console.log("pathname", pathname);
+
+  // const handleUpdateQueryParams = (value: string) => {
+  //   const newParams = new URLSearchParams();
+  //   newParams.set("p", value);
+  //   router.push(createUrl("x", newParams));
+  // };
 
   const billingPeriod = plantState.billingPeriod;
 
@@ -16,6 +29,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
 
   const handlePlanSelection = () => {
     plantState.setSelectedPlan(plan);
+    updateQueryParams(plan.id, "p");
   };
 
   return (
@@ -47,7 +61,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
       </div>
 
       <PriceDisplay
-        price={displayPrice}
+        price={displayPrice ?? 0}
         className="mx-auto my-auto min-w-[130px] lg:mx-8"
       />
     </button>

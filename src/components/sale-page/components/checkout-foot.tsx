@@ -5,18 +5,18 @@ const links = [
   {
     id: "1",
     name: "Terms",
-    url: "/terms",
+    url: "https://aftershoot.com/terms-of-use/",
   },
   {
     id: "2",
     name: "Privacy",
-    url: "/privacy",
+    url: "https://aftershoot.com/privacy-policy/",
   },
-  {
-    id: "3",
-    name: "Refunds",
-    url: "/refunds",
-  },
+  // {
+  //   id: "3",
+  //   name: "Refunds",
+  //   url: "/refunds",
+  // },
 ];
 
 const CheckoutFoot = ({ className }: { className?: string }) => {
@@ -32,6 +32,7 @@ const CheckoutFoot = ({ className }: { className?: string }) => {
           <a
             key={link.id}
             href={link.url}
+            target="_blank"
             className="text-xs font-semibold tracking-[0.24px] text-suvaGrey"
           >
             {link.name}

@@ -1,3 +1,5 @@
+"use client";
+
 import pricingData from "../data/pricing-data";
 import PlanCard from "./plan-card";
 

@@ -53,7 +53,7 @@ const PricingBanner = () => {
         </div>
 
         <h1 className="mx-auto mt-24 w-full max-w-[780px] px-6 text-center text-[52px] leading-[52px] tracking-[-1.56px] md:text-[88px] md:leading-[88px] md:tracking-[-2.56px]">
-          Grab Your 25% Discount Now
+          Grab Your 25% Discount Now 🎉
         </h1>
 
         <div className=" mx-auto my-32 grid w-full max-w-[87rem] flex-wrap gap-4 px-4 text-black sm:grid-cols-2 md:px-4 lg:flex">

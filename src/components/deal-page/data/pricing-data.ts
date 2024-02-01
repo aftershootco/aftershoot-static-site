@@ -3,7 +3,7 @@ const pricingData = [
     id: "1",
     pricingName: "Selects",
     description: "Get unlimited AI Culling",
-    discountedPrice: 99,
+    discountedPrice: 90,
     originalPrice: 120,
     billType: "Billed Annually",
     highlight: false,

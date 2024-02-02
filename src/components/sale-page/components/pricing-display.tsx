@@ -14,7 +14,7 @@ const PriceDisplay = (props: PriceDisplayProps) => {
   const billingPeriod = plantState.billingPeriod;
 
   const perPeriodic = billingPeriod === "monthly" ? "mo" : "yr";
-  const billyPeriodic = billingPeriod === "monthly" ? "Monthly" : "Annually";
+  const billPeriodic = billingPeriod === "monthly" ? "Monthly" : "Annually";
 
   return (
     <div className={cn(className && className)}>
@@ -22,12 +22,10 @@ const PriceDisplay = (props: PriceDisplayProps) => {
         <div className="text-[34px] font-medium leading-[60px] lg:text-[45px]">
           ${price}
         </div>
-        <div className="text-[20px] leading-[34px] text-suvaGrey">
-          /{perPeriodic}
-        </div>
+        <div className="text-[20px] leading-[34px] text-suvaGrey">/mo</div>
       </div>
       <p className="text-[15.15px] tracking-[0.302px] text-[#323232]">
-        Billed {billyPeriodic}
+        Billed {billPeriodic}
       </p>
     </div>
   );

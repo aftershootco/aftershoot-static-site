@@ -24,11 +24,6 @@ const CheckoutInfo = () => {
   const triggerToast = useAppTaost();
   const { clearQueryParams, getQueryParams } = useQueryUtil();
 
-  const displayPrice =
-    billingPeriod === "monthly"
-      ? SELECTED_PLAN?.price.monthly
-      : SELECTED_PLAN?.price.yearly;
-
   const handleOnBackButtonClick = () => {
     plantState.setSelectedPlan(null);
     clearQueryParams();
@@ -53,6 +48,20 @@ const CheckoutInfo = () => {
     }
   }, []);
 
+  const DISPLAY_PRICE =
+    plantState.billingPeriod === "monthly"
+      ? SELECTED_PLAN?.price.monthly
+      : SELECTED_PLAN?.price.yearly;
+
+  const DISPLAY_PRICE_YEARLY = (DISPLAY_PRICE ?? 0) * 12;
+
+  const SUB_TOTAL =
+    plantState.billingPeriod === "monthly"
+      ? (SELECTED_PLAN?.price.monthly ?? 0) * 12
+      : (SELECTED_PLAN?.price.yearly ?? 0) * 12;
+
+  const TOTAL = SUB_TOTAL;
+
   return (
     <div
       className={cn(
@@ -75,7 +84,7 @@ const CheckoutInfo = () => {
                   </p>
                 </div>
                 <PriceDisplay
-                  price={displayPrice ?? 0}
+                  price={DISPLAY_PRICE ?? 0}
                   className="mx-8 my-auto text-[40px]"
                 />
               </div>
@@ -91,7 +100,7 @@ const CheckoutInfo = () => {
                       Aftershoot {SELECTED_PLAN?.pricingName}
                     </div>
                     <div>
-                      {SELECTED_PLAN?.price.yearly ?? "00"}
+                      {DISPLAY_PRICE_YEARLY}
                       <span className="text-suvaGrey">/year</span>
                     </div>
                   </div>
@@ -100,14 +109,14 @@ const CheckoutInfo = () => {
                     <div className="text-sm font-light tracking-[0.14px]">
                       Subtotal
                     </div>
-                    <div>{SELECTED_PLAN?.price.yearly ?? "00"}</div>
+                    <div>{SUB_TOTAL}</div>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm font-light tracking-[0.14px]">
                       Total
                     </div>
-                    <div>{SELECTED_PLAN?.price.yearly ?? "00"}</div>
+                    <div>{TOTAL}</div>
                   </div>
                 </div>
               </div>

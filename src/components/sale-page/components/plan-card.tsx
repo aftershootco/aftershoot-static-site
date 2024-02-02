@@ -25,7 +25,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
     <button
       key={plan.id}
       className={cn(
-        "relative flex flex-col justify-between gap-4 divide-purple-200 rounded-md border border-[#ABABAB] bg-white/70 p-4 shadow-sm transition-all active:scale-[99.5%] md:flex-row md:p-6",
+        "relative flex flex-col justify-between gap-2 divide-purple-200 rounded-md border border-[#ABABAB] bg-white/70 p-4 shadow-sm transition-all active:scale-[99.5%] md:flex-row md:p-6",
         plan.highlight && "border-2 border-[#474747] bg-white",
         plantState.selectedPlan?.id === plan.id && "bg-[#6392D5]/20",
       )}
@@ -38,23 +38,30 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
           <h2 className="text-xl -tracking-[0.2px]">
             Aftershoot {plan.pricingName}
           </h2>
-          <p className="text-xs tracking-[0.24px]">{plan.description}</p>
+          <p className=" text-xs tracking-[0.24px]">{plan.description}</p>
         </div>
 
         <div className="mt-6 space-y-2 text-sm font-light tracking-[0.14px]">
           {plan.features.map((feature) => (
-            <div key={feature.id} className="flex items-center gap-2">
+            <div
+              key={feature.id}
+              className="flex max-w-[250px] items-center gap-2 lg:overflow-visible"
+            >
               {feature.include ? (
-                <AppIconComponent.CheckIcon />
+                <AppIconComponent.CheckIcon
+                  color="#71B4A7"
+                  className="shrink-0"
+                />
               ) : (
-                <AppIconComponent.CrossIcon color="red" />
+                <AppIconComponent.CrossIcon color="red" className="shrink-0" />
               )}
 
-              <div>{feature.featureName}</div>
+              <div className="lg:whitespace-nowrap">{feature.featureName}</div>
             </div>
           ))}
         </div>
       </div>
+
       <PriceDisplay
         price={displayPrice ?? 0}
         className="mx-auto my-auto min-w-[100px] lg:mx-4"

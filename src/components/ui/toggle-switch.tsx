@@ -40,7 +40,7 @@ const ToggleSwitch = (props: ToggleSwitchProps) => {
           backgroundColor:
             buttonRef.current?.getAttribute("data-state") === "checked"
               ? color
-              : APP_COLORS.CORNFLOWERBLUE,
+              : "",
         }}
         id="airplane-mode"
         // style={{ "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)" }}

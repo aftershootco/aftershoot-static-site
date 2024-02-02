@@ -24,7 +24,7 @@ const PriceDisplay = (props: PriceDisplayProps) => {
         </div>
         <div className="text-[20px] leading-[34px] text-suvaGrey">/mo</div>
       </div>
-      <p className="text-[15.15px] tracking-[0.302px] text-[#323232]">
+      <p className="w-max text-[15.15px] tracking-[0.302px] text-[#323232]">
         Billed {billPeriodic}
       </p>
     </div>

@@ -53,7 +53,10 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
                   className="shrink-0"
                 />
               ) : (
-                <AppIconComponent.CrossIcon color="red" className="shrink-0" />
+                <AppIconComponent.CrossIcon
+                  color="#DC4949"
+                  className="shrink-0"
+                />
               )}
 
               <div className="lg:whitespace-nowrap">{feature.featureName}</div>

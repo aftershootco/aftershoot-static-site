@@ -5,6 +5,7 @@ import useQueryUtil from "@/hooks/useQueryUtil";
 import { cn } from "@/utils/cn";
 import usePlanState from "../../../store/plan-state";
 import { pricingDataProps } from "../data/pricing-data";
+import BestPlanHightlight from "./best-plan-hightlight";
 import PriceDisplay from "./pricing-display";
 
 const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
@@ -24,12 +25,14 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
     <button
       key={plan.id}
       className={cn(
-        "flex flex-col justify-between gap-4 divide-purple-200 rounded-md border border-[#ABABAB] bg-white/70 p-4 shadow-sm transition-all active:scale-[99.5%] md:flex-row md:p-6",
+        "relative flex flex-col justify-between gap-4 divide-purple-200 rounded-md border border-[#ABABAB] bg-white/70 p-4 shadow-sm transition-all active:scale-[99.5%] md:flex-row md:p-6",
 
         plan.highlight && "border-2 border-[#474747] bg-white",
       )}
       onClick={handlePlanSelection}
     >
+      <BestPlanHightlight hide={!plan.highlight} />
+
       <div className="text-left">
         <div>
           <h2 className="text-xl -tracking-[0.2px]">
@@ -47,7 +50,6 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
           ))}
         </div>
       </div>
-
       <PriceDisplay
         price={displayPrice ?? 0}
         className="mx-auto my-auto min-w-[130px] lg:mx-8"

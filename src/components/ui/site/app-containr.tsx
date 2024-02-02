@@ -11,7 +11,7 @@ const AppContainer = forwardRef<HTMLDivElement, TAppContainerProps>(
       <div
         ref={ref}
         className={cn(
-          "mx-auto w-full max-w-[80rem] px-2 py-8 md:py-14 xxl:px-0",
+          "mx-auto w-full max-w-[1000px] px-2 py-8 md:py-14 xxl:px-0",
           className && className,
         )}
         {...rest}

@@ -44,7 +44,12 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
         <div className="mt-6 space-y-2 text-sm font-light tracking-[0.14px]">
           {plan.features.map((feature) => (
             <div key={feature.id} className="flex items-center gap-2">
-              {feature.include && <AppIconComponent.CheckIcon />}
+              {feature.include ? (
+                <AppIconComponent.CheckIcon />
+              ) : (
+                <AppIconComponent.CrossIcon color="red" />
+              )}
+
               <div>{feature.featureName}</div>
             </div>
           ))}
@@ -52,7 +57,7 @@ const PlanCard = ({ plan }: { plan: pricingDataProps }) => {
       </div>
       <PriceDisplay
         price={displayPrice ?? 0}
-        className="mx-auto my-auto min-w-[130px] lg:mx-8"
+        className="mx-auto my-auto min-w-[100px] lg:mx-4"
       />
     </button>
   );

@@ -2,7 +2,7 @@ const pricingData = [
   {
     id: "1p",
     pricingName: "Selects",
-    description: "Ideal for editing with pre-built AI Styles",
+    description: "Unlimited culling only plan",
     price: {
       monthly: 15,
       yearly: 10,
@@ -20,9 +20,21 @@ const pricingData = [
       },
       {
         id: "2",
-        featureName: "1 Seat Multiple Logins",
+        featureName: "Access to Marketplace",
         bold: false,
         include: true,
+      },
+      {
+        id: "3",
+        featureName: "Duplicate Detection",
+        bold: false,
+        include: true,
+      },
+      {
+        id: "4",
+        featureName: "Does not include Editing",
+        bold: false,
+        include: false,
       },
     ],
     productId: "price_1NltSzCYznn1uZfNgmm8YUFW",
@@ -31,8 +43,8 @@ const pricingData = [
   },
   {
     id: "2p",
-    pricingName: "Edits",
-    description: "Unlimited Culling at your disposal",
+    pricingName: "Essentials",
+    description: "Ideal for editing with pre-built AI Styles",
     price: {
       monthly: 18,
       yearly: 15,

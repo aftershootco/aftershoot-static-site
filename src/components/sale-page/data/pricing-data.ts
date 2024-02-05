@@ -80,15 +80,15 @@ const pricingData = [
       },
       {
         id: "5",
-        featureName: "Does not include Personal AI Editing Profiles",
-        bold: false,
-        include: false,
-      },
-      {
-        id: "6",
         featureName: "Supports Lightroom Classic & Capture One",
         bold: false,
         include: true,
+      },
+      {
+        id: "6",
+        featureName: "Does not include Personal AI Editing Profiles",
+        bold: false,
+        include: false,
       },
     ],
     productId: "price_1IxujVCYznn1uZfNYhWHoKa0",

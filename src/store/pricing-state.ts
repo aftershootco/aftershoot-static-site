@@ -5,16 +5,16 @@ type TState = {
 };
 
 type TActions = {
-  toggleBillingPeriod: () => void;
+  updateBillingPeriod: (string: "monthly" | "annually") => void;
 };
 
 type TPlanState = TState & TActions;
 
 const usePricingState = create<TPlanState>((set) => ({
-  billingPeriod: "monthly",
-  toggleBillingPeriod: () =>
+  billingPeriod: "annually",
+  updateBillingPeriod: (string) =>
     set((state) => ({
-      billingPeriod: state.billingPeriod === "monthly" ? "annually" : "monthly",
+      billingPeriod: string,
     })),
 }));
 

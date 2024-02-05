@@ -1,5 +1,6 @@
 // import BillTypeToggle from "./components/bill-type-toggle";
 import BillTypeToggle from "./components/bill-type-toggle";
+import PageTitle from "./components/page-title";
 import PricingCard from "./components/pricing-card";
 import SiteTitle from "./components/site-title";
 import pricingData from "./data/pricing-data";
@@ -16,9 +17,9 @@ const PricingBanner = () => {
       >
         <SiteTitle />
 
-        <BillTypeToggle
-        // handleToggleBillType={() => {}}
-        />
+        <BillTypeToggle />
+
+        <PageTitle />
 
         <div className=" mx-auto my-32 grid w-full max-w-[87rem] flex-wrap gap-4 px-4 text-black sm:grid-cols-2 md:px-4 lg:flex">
           {pricingData.map((pricing) => (

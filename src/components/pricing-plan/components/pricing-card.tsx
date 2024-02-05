@@ -1,6 +1,7 @@
 "use client";
 
 import { dealIcons } from "@/assets/icons";
+import usePricingState from "@/store/pricing-state";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -15,6 +16,7 @@ const PricingCard = (props: PricingCardProps) => {
 
   const searchParams = useSearchParams();
   const userEmail = searchParams.get("email");
+  const pricingState = usePricingState();
 
   const handlePricingButtonClick = (productKey: string) => {
     if (!userEmail) {
@@ -32,6 +34,16 @@ const PricingCard = (props: PricingCardProps) => {
 
     window.location.href = link;
   };
+
+  const activeBillType = pricingState.billingPeriod;
+
+  const billType =
+    activeBillType === "monthly" ? "Billed Monthly" : "Billed Annually";
+
+  const planPricing =
+    activeBillType === "monthly" ? pricing.price.monthly : pricing.price.yearly;
+
+  // console.log("activeBillType", activeBillType);
 
   return (
     <div
@@ -58,20 +70,20 @@ const PricingCard = (props: PricingCardProps) => {
 
       <div className="mt-4 flex items-end gap-2 font-archivo -tracking-[1.2px]">
         <div className="text-[60px] font-semibold leading-[81px]">
-          ${pricing.discountedPrice}
+          ${planPricing}
         </div>
-        <div className="mb-3 text-[34px] font-normal leading-[44px] text-[#8E8E8E] line-through">
-          ${pricing.originalPrice}
-        </div>
+        {/* <div className="mb-3 text-[34px] font-normal leading-[44px] text-[#8E8E8E] line-through">
+          ${pricing.price.monthly}
+        </div> */}
       </div>
 
       <div className="font-archivo font-light tracking-[0.16px] text-[#8E8E8E]">
-        {pricing.billType}{" "}
+        {billType}{" "}
       </div>
 
       <button
         className="my-6 w-full  rounded-md bg-[#6599FF] py-4 font-archivo font-semibold tracking-wide text-white"
-        onClick={() => handlePricingButtonClick(pricing.productKey)}
+        onClick={() => handlePricingButtonClick(pricing.productId)}
       >
         Claim the Deal
       </button>

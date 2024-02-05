@@ -4,14 +4,17 @@ import usePricingState from "@/store/pricing-state";
 import { cn } from "@/utils/cn";
 import { motion, spring } from "framer-motion";
 
-const buttonConfig = [
-  {
-    name: "Billed Annually",
-    value: "annually",
-  },
+const buttonConfig: {
+  name: string;
+  value: "monthly" | "annually";
+}[] = [
   {
     name: "Billed Monthly",
     value: "monthly",
+  },
+  {
+    name: "Billed Annually",
+    value: "annually",
   },
 ];
 
@@ -20,13 +23,16 @@ const BillTypeToggle = () => {
 
   const activeBillType = pricingState.billingPeriod;
 
-  const handleToggleBillType = (value: string) => {
-    pricingState.toggleBillingPeriod();
+  const handleToggleBillType = (value: "monthly" | "annually") => {
+    console.log("value", value);
+    pricingState.updateBillingPeriod(value);
   };
 
+  console.log("activeBillType", activeBillType);
+
   return (
-    <div className="py-8">
-      <div className="mx-auto w-max rounded-lg border-[2px] border-white p-1 font-archivo">
+    <div className="pt-8">
+      <div className="mx-auto w-max rounded-lg border-[1px] border-white p-1 font-archivo">
         {buttonConfig.map((button) => (
           <button
             key={button.value}

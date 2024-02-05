@@ -10,6 +10,8 @@ const CheckIcon = React.forwardRef<SVGSVGElement, IconProps>(
         height={size}
         viewBox="0 0 16 16"
         fill="none"
+        ref={forwardedRef}
+        {...props}
       >
         <g clip-path="url(#clip0_342_371)">
           <path

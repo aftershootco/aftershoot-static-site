@@ -1,9 +1,9 @@
-import DealPage from "../../components/pricing-plan";
+import PricingPage from "../../components/pricing-plan";
 
 const page = () => {
   return (
     <div>
-      <DealPage />
+      <PricingPage />
     </div>
   );
 };

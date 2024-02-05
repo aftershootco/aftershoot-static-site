@@ -1,4 +1,4 @@
-import DealPage from "../../components/deal-page";
+import DealPage from "../../components/pricing-plan";
 
 const page = () => {
   return (

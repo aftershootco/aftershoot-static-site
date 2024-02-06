@@ -1,8 +1,17 @@
+import { AppToast } from "@/hooks/useAppTaost";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+});
+
+const erodeVariable = localFont({
+  src: "../../public/fonts/Erode-Variable.ttf",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,12 +20,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${archivo.variable} ${erodeVariable.style}`}>
+        <AppToast />
+        {children}
+      </body>
     </html>
   );
 }

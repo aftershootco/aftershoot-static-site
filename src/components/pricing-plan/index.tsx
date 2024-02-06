@@ -7,14 +7,12 @@ import SiteTitle from "./components/site-title";
 
 const PricingBanner = () => {
   return (
-    <div>
-      <ComponentContianer>
-        <SiteTitle />
-        <BillTypeToggle />
-        <PageTitle />
-        <PricingCardList />
-      </ComponentContianer>
-    </div>
+    <ComponentContianer>
+      <SiteTitle />
+      <BillTypeToggle />
+      <PageTitle />
+      <PricingCardList />
+    </ComponentContianer>
   );
 };
 

@@ -28,8 +28,6 @@ const BillTypeToggle = () => {
     pricingState.updateBillingPeriod(value);
   };
 
-  // console.log("activeBillType", activeBillType);
-
   return (
     <div className="pt-8">
       <div className="mx-auto w-max rounded-lg border-[1px] border-white p-1 font-archivo">

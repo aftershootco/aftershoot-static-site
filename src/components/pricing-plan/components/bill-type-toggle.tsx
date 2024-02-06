@@ -34,7 +34,7 @@ const BillTypeToggle = () => {
         {buttonConfig.map((button) => (
           <button
             key={button.value}
-            className={cn("relative px-6 py-3 mix-blend-exclusion")}
+            className={cn("relative px-6 py-[11.5px] mix-blend-exclusion")}
             onClick={() => handleToggleBillType(button.value)}
           >
             <div
